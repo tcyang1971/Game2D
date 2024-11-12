@@ -14,6 +14,14 @@ import androidx.compose.ui.tooling.preview.Preview
 import tw.edu.pu.csim.tcyang.game2d.ui.theme.Game2DTheme
 import android.content.pm.ActivityInfo
 
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+
+import androidx.compose.foundation.layout.Row
+import androidx.compose.material3.Button
+
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,5 +40,20 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun Start(m: Modifier){
+    var counter by remember { mutableStateOf(0) }
+
+    Row {
+        Button(
+            onClick = {
+                if (counter<40){
+                    counter ++
+                }
+            }
+        ) {
+            Text(text = "加1")
+        }
+
+        Text(text = counter.toString(), modifier = m)
+    }
 
 }
