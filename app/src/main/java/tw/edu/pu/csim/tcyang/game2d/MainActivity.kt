@@ -25,6 +25,7 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
+import androidx.compose.runtime.collectAsState
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,7 +45,7 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun Start(m: Modifier, game:Game){
-    var counter by remember { mutableStateOf(0) }
+    val counter by game.state.collectAsState()
 
     Row {
         Button(
@@ -55,7 +56,7 @@ fun Start(m: Modifier, game:Game){
             Text(text = "開始")
         }
 
-        Text(text = game.counter.toString(), modifier = m)
+        Text(text = counter.toString(), modifier = m)
     }
 
 }
