@@ -21,6 +21,9 @@ import androidx.compose.runtime.setValue
 
 import androidx.compose.foundation.layout.Row
 import androidx.compose.material3.Button
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 
 class MainActivity : ComponentActivity() {
@@ -45,12 +48,16 @@ fun Start(m: Modifier){
     Row {
         Button(
             onClick = {
-                if (counter<40){
-                    counter ++
+                GlobalScope.launch {
+                    counter = 0
+                    while (counter<1000){
+                        delay(40)
+                        counter ++
+                    }
                 }
             }
         ) {
-            Text(text = "加1")
+            Text(text = "開始")
         }
 
         Text(text = counter.toString(), modifier = m)
