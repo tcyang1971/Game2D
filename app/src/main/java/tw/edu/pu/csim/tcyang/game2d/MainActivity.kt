@@ -54,6 +54,7 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun Start(m: Modifier, game:Game){
     val counter by game.state.collectAsState()
+    var msg by remember { mutableStateOf("遊戲開始") }
 
     Image(
         painter = painterResource(id = R.drawable.forest),
@@ -74,13 +75,20 @@ fun Start(m: Modifier, game:Game){
     Row {
         Button(
             onClick = {
-                game.Play()
+                if (msg=="遊戲開始"){
+                    msg = "遊戲暫停"
+                    game.Play()
+                }
+                else{
+                    msg = "遊戲開始"
+                    game.isPlaying = false
+                }
             }
         ) {
-            Text(text = "開始")
+            Text(text = msg)
         }
 
-        Text(text = counter.toString(), modifier = m)
+        Text(text = "%.2f 秒".format(counter*.04), modifier = m)
     }
 
 }
