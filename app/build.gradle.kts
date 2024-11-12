@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "tw.edu.pu.csim.tcyang.game2d"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "tw.edu.pu.csim.tcyang.game2d"

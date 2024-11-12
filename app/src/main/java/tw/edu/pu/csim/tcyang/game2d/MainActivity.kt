@@ -12,6 +12,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import tw.edu.pu.csim.tcyang.game2d.ui.theme.Game2DTheme
+import android.content.pm.ActivityInfo
+
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,10 +22,8 @@ class MainActivity : ComponentActivity() {
         setContent {
             Game2DTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
+                    setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE)
+                    Start(m = Modifier.padding(innerPadding))
                 }
             }
         }
@@ -31,17 +31,6 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
+fun Start(m: Modifier){
 
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    Game2DTheme {
-        Greeting("Android")
-    }
 }
