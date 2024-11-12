@@ -27,6 +27,12 @@ import kotlinx.coroutines.launch
 
 import androidx.compose.runtime.collectAsState
 
+import androidx.compose.foundation.Image
+import androidx.compose.ui.res.painterResource
+import androidx.compose.foundation.layout.offset
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.unit.IntOffset
+
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,6 +52,14 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun Start(m: Modifier, game:Game){
     val counter by game.state.collectAsState()
+
+    Image(
+        painter = painterResource(id = R.drawable.forest),
+        contentDescription = "背景圖",
+        contentScale = ContentScale.FillBounds,  //縮放符合螢幕寬度
+        modifier = Modifier
+            .offset { IntOffset(-counter, 0) }
+    )
 
     Row {
         Button(
