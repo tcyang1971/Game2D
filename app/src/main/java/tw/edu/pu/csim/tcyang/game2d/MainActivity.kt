@@ -61,6 +61,14 @@ fun Start(m: Modifier, game:Game){
             .offset { IntOffset(-counter, 0) }
     )
 
+    Image(
+        painter = painterResource(id = R.drawable.forest),
+        contentDescription = "背景圖2",
+        contentScale = ContentScale.FillBounds,  //縮放符合螢幕寬度
+        modifier = Modifier
+            .offset { IntOffset(-counter+2000, 0) }
+    )
+
     Row {
         Button(
             onClick = {
